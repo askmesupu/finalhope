@@ -11,7 +11,7 @@ export default function SubpageButton({ to, label }) {
     setTimeout(() => {
       setShowOverlay(false);
       navigate(to);
-    }, 1500); // full-screen heart animation duration
+    }, 1500); // heart animation duration
   };
 
   return (
@@ -33,10 +33,12 @@ export default function SubpageButton({ to, label }) {
             exit={{ opacity: 0 }}
             className="fixed inset-0 flex items-center justify-center bg-black z-50"
           >
-            <div className="heart-shape w-64 h-64 animate-pulse"></div>
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="heart-shape w-64 md:w-96 h-64 md:h-96 animate-pulse"></div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
-          }
+}
