@@ -1,83 +1,40 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Fullscreen html, body, root */
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+/* Reset & base */
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { width:100%; height:100%; font-family:'Arial', sans-serif; overflow-x:hidden; }
 
 /* Gradient background animation */
 .bg-animate {
-  background: linear-gradient(270deg, #ff7eb9, #ff65a3, #ffc7c7, #b2fefa);
-  background-size: 800% 800%;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  background-size: 400% 400%;
   animation: gradientBG 20s ease infinite;
 }
-
 @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-/* Heart shape for animation */
-.heart-shape {
-  width: 100px;
-  height: 100px;
-  background-color: red; /* value fix */
-  position: relative;
-  transform: rotate(-45deg);
-  animation: pulse 1.5s infinite alternate;
-}
+/* Header */
+header { text-align:center; color:white; padding:2rem 1rem; z-index:10; }
+header h1 { font-size:2rem; font-weight:bold; }
 
-.heart-shape::before,
-.heart-shape::after {
-  content: "";
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  border-radius: 50%;
-  position: absolute;
-}
+/* Circle pics */
+.circle-pic { width:120px; height:120px; border-radius:50%; object-fit:cover; border:4px solid white; margin:0 0.5rem; }
 
-.heart-shape::before {
-  top: -50%;
-  left: 0;
-}
+/* Navbar */
+.navbar { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin:1rem 0; z-index:10; }
+.navbar button { padding:0.6rem 1.2rem; font-size:1rem; border-radius:8px; background:rgba(255,255,255,0.2); color:white; border:none; cursor:pointer; transition:all 0.3s ease; }
+.navbar button:hover { background:rgba(255,255,255,0.5); }
 
-.heart-shape::after {
-  top: 0;
-  left: 50%;
-}
+/* Heart container */
+.heart-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; }
 
-/* Heart pulse animation */
-@keyframes pulse {
-  0% { transform: rotate(-45deg) scale(1); }
-  100% { transform: rotate(-45deg) scale(1.2); }
-}
+/* Floating words */
+.floating-word { position:absolute; font-size:12px; color:#ff6b81; animation: floatUp linear infinite; }
+@keyframes floatUp { 0%{transform:translateY(100vh) scale(0.5); opacity:0;} 50%{opacity:1;} 100%{transform:translateY(-10vh) scale(1); opacity:0;} }
 
-/* Floating words for MyHeart page */
-.floating-word {
-  position: absolute;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.7);
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-}
+/* Subpage content */
+.subpage-content { width:100%; min-height:100vh; display:flex; justify-content:center; align-items:center; text-align:center; padding:1rem; color:white; font-size:1.2rem; line-height:1.8; }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .heart-shape {
-    width: 70px;
-    height: 70px;
-  }
-  .heart-shape::before,
-  .heart-shape::after {
-    width: 70px;
-    height: 70px;
-  }
-    }
+/* Responsive fixes */
+@media(max-width:768px){ header h1{font-size:1.6rem;} .navbar button{padding:0.5rem 1rem; font-size:0.9rem;} .circle-pic{width:100px;height:100px;} }
