@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -----------------------------
+   Heart shape for SubpageButton
+------------------------------- */
+.heart-shape {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  transform: rotate(-45deg);
+}
+.heart-shape::before,
+.heart-shape::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: red;
+}
+.heart-shape::before {
+  top: -40px;
+  left: 0;
+}
+.heart-shape::after {
+  left: 40px;
+  top: 0;
+}
+
+/* -----------------------------
+   Gradient background animation
+------------------------------- */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -11,4 +42,37 @@
 .bg-animate {
   background-size: 200% 200%;
   animation: gradientBG 15s ease infinite;
+}
+
+/* -----------------------------
+   Button styles
+------------------------------- */
+.btn {
+  @apply px-4 py-2 rounded-xl bg-pink-600 text-white shadow-md hover:bg-pink-700 transition;
+}
+
+/* -----------------------------
+   Mobile friendly fixes
+------------------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p, h1, h2, h3 {
+  word-wrap: break-word;
+}
+
+/* -----------------------------
+   Overlay smooth
+------------------------------- */
+.overlay-fade {
+  transition: opacity 0.8s ease-in-out;
 }
