@@ -1,13 +1,36 @@
-/* Tailwind base import */
+/* Tailwind base imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Heart shape for animations */
+/* Fullscreen html, body, root */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Background gradient animation */
+.bg-animate {
+  background: linear-gradient(270deg, #ff7eb9, #ff65a3, #ffc7c7, #b2fefa);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Heart shape for animation */
 .heart-shape {
   width: 100px;
   height: 100px;
-  background-color: red;
+  background-color: red; /* fixed error */
   position: relative;
   transform: rotate(-45deg);
   animation: pulse 1.5s infinite alternate;
@@ -33,63 +56,32 @@
   left: 50%;
 }
 
-/* Pulse animation */
+/* Heart pulse animation */
 @keyframes pulse {
-  0% {
-    transform: rotate(-45deg) scale(1);
-  }
-  100% {
-    transform: rotate(-45deg) scale(1.2);
-  }
+  0% { transform: rotate(-45deg) scale(1); }
+  100% { transform: rotate(-45deg) scale(1.2); }
 }
 
-/* Background gradient animation */
-.bg-animate {
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Floating Shiropa words in MyHeart page */
+/* Floating words for MyHeart page */
 .floating-word {
   position: absolute;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
   pointer-events: none;
+  user-select: none;
 }
 
-/* Make sure html and body take full height */
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-/* Mobile friendly adjustments */
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .heart-shape {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   .heart-shape::before,
   .heart-shape::after {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 }
