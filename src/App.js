@@ -11,7 +11,7 @@ import AnswerMyQuestion from "./pages/AnswerMyQuestion";
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+      <div className="min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,4 +24,4 @@ export default function App() {
       </div>
     </Router>
   );
-    }
+  }
