@@ -1,10 +1,95 @@
+/* Tailwind base import */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Heart Shape */
+/* Heart shape for animations */
 .heart-shape {
+  width: 100px;
+  height: 100px;
+  background-color: red;
   position: relative;
-  width: 80px;
-  height: 80px;
-  background-color
+  transform: rotate(-45deg);
+  animation: pulse 1.5s infinite alternate;
+}
+
+.heart-shape::before,
+.heart-shape::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart-shape::before {
+  top: -50%;
+  left: 0;
+}
+
+.heart-shape::after {
+  top: 0;
+  left: 50%;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1.2);
+  }
+}
+
+/* Background gradient animation */
+.bg-animate {
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating Shiropa words in MyHeart page */
+.floating-word {
+  position: absolute;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Make sure html and body take full height */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Mobile friendly adjustments */
+@media (max-width: 768px) {
+  .heart-shape {
+    width: 80px;
+    height: 80px;
+  }
+
+  .heart-shape::before,
+  .heart-shape::after {
+    width: 80px;
+    height: 80px;
+  }
+}
