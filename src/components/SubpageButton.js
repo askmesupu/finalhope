@@ -8,10 +8,12 @@ export default function SubpageButton({ to, label }) {
 
   const handleClick = () => {
     setAnimating(true);
+
+    // ছোট delay দিয়ে navigate হবে, তারপর overlay clear হবে
     setTimeout(() => {
       navigate(to);
-      setAnimating(false); // navigate হওয়ার পর overlay clear
-    }, 1000); // animation সময়
+      setAnimating(false);
+    }, 800);
   };
 
   return (
@@ -33,20 +35,19 @@ export default function SubpageButton({ to, label }) {
             transition={{ duration: 0.5 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
           >
-            {/* Proper CSS Heart */}
-            <motion.div
+            {/* ✅ Perfect Heart Shape (SVG) */}
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="red"
               initial={{ scale: 0 }}
               animate={{ scale: 1.2 }}
               exit={{ scale: 0 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="relative w-24 h-24 md:w-40 md:h-40"
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="w-24 h-24 md:w-40 md:h-40"
             >
-              <div className="w-full h-full relative transform -rotate-45">
-                <div className="absolute top-0 left-1/2 w-1/2 h-1/2 bg-red-500 rounded-full -translate-x-1/2"></div>
-                <div className="absolute left-0 top-1/2 w-1/2 h-1/2 bg-red-500 rounded-full -translate-y-1/2"></div>
-                <div className="absolute w-full h-full bg-red-500"></div>
-              </div>
-            </motion.div>
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1 4.22 2.44h.56C13.09 5 14.76 4 16.5 4 19 4 21 6 21 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </motion.svg>
           </motion.div>
         )}
       </AnimatePresence>
