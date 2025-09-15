@@ -11,7 +11,7 @@ import AnswerMyQuestion from "./pages/AnswerMyQuestion";
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen">
+      <div className="min-h-screen relative">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,4 +24,4 @@ export default function App() {
       </div>
     </Router>
   );
-  }
+}
