@@ -10,7 +10,7 @@ export default function SubpageButton({ to, label }) {
     setAnimating(true);
     setTimeout(() => {
       navigate(to);
-    }, 1500); // animation duration
+    }, 1200); // animation duration reduced for smooth mobile performance
   };
 
   return (
@@ -26,20 +26,20 @@ export default function SubpageButton({ to, label }) {
         {animating && (
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 20, opacity: 1 }}
+            animate={{ scale: 10, opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="fixed inset-0 bg-black z-50 flex items-center justify-center"
           >
             <motion.div
               initial={{ rotate: 0 }}
               animate={{ rotate: 720 }}
-              transition={{ duration: 1.5, ease: "linear" }}
-              className="w-6 h-6 border-4 border-white rounded-full"
+              transition={{ duration: 1.2, ease: "linear" }}
+              className="w-5 h-5 border-4 border-white rounded-full"
             ></motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
-          }
+              }
