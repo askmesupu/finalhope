@@ -2,34 +2,32 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function MyHeart() {
-  const words = Array.from({ length: 100 }, () => "Shiropa");
-
   return (
-    <div className="w-full min-h-screen overflow-hidden bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-animate relative flex items-center justify-center">
-      {words.map((word, idx) => (
+    <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-r from-red-500 via-pink-600 to-purple-700 relative overflow-hidden">
+      {Array.from({ length: 40 }).map((_, i) => (
         <motion.span
-          key={idx}
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: window.innerHeight,
-            opacity: 0,
-          }}
-          animate={{
-            y: -50,
-            opacity: [0, 1, 0],
-          }}
+          key={i}
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: [0, 1, 0], y: [-50, -200] }}
           transition={{
-            duration: 15 + Math.random() * 10,
+            duration: 6,
             repeat: Infinity,
-            ease: "linear",
-            repeatType: "loop",
+            delay: i * 0.3,
           }}
-          className={`absolute text-white font-bold text-xs md:text-sm`}
-          style={{ pointerEvents: "none" }}
+          className="absolute text-white text-xl"
+          style={{ left: `${Math.random() * 100}%`, bottom: "-20px" }}
         >
-          {word}
+          Shiropa
         </motion.span>
       ))}
+      <motion.h1
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1 }}
+        className="text-white text-3xl md:text-5xl font-bold z-10"
+      >
+        My Heart Beats Only for You ❤️
+      </motion.h1>
     </div>
   );
-}
+            }
