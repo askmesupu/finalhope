@@ -10,8 +10,8 @@ export default function SubpageButton({ to, label }) {
     setAnimating(true);
     setTimeout(() => {
       navigate(to);
-      setAnimating(false);
-    }, 1200); // subpage load delay
+      setAnimating(false); // navigate হওয়ার পর overlay clear
+    }, 1000); // animation সময়
   };
 
   return (
@@ -26,23 +26,26 @@ export default function SubpageButton({ to, label }) {
       <AnimatePresence>
         {animating && (
           <motion.div
+            key="overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
           >
-            {/* Proper Heart Shape */}
+            {/* Proper CSS Heart */}
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1.2 }}
               exit={{ scale: 0 }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="relative w-32 h-32 md:w-48 md:h-48"
+              className="relative w-24 h-24 md:w-40 md:h-40"
             >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 md:w-24 md:h-24 bg-red-500 rounded-full"></div>
-              <div className="absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 bg-red-500 rounded-full"></div>
-              <div className="absolute top-8 md:top-12 left-0 w-32 md:w-48 h-32 md:h-48 bg-red-500 rotate-45 transform origin-top-left"></div>
+              <div className="w-full h-full relative transform -rotate-45">
+                <div className="absolute top-0 left-1/2 w-1/2 h-1/2 bg-red-500 rounded-full -translate-x-1/2"></div>
+                <div className="absolute left-0 top-1/2 w-1/2 h-1/2 bg-red-500 rounded-full -translate-y-1/2"></div>
+                <div className="absolute w-full h-full bg-red-500"></div>
+              </div>
             </motion.div>
           </motion.div>
         )}
